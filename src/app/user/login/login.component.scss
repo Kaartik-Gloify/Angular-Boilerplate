@@ -1,0 +1,36 @@
+@import "../../variables.scss";
+.app-outlet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 3.1rem);
+}
+.login-card {
+  max-width: 400px;
+  width: 400px;
+}
+
+.login-card-header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}
+.login-card-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-card-container > * {
+  width: 100%;
+}
+
+.card-actions {
+  text-align: center;
+}
+
+.mat-card-content {
+  margin: 1rem;
+}
+
+button {
+  color: mat-color($primaryPalette);
+}
