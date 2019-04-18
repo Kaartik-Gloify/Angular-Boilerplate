@@ -41,11 +41,13 @@ import {
   MatTreeModule
 } from "@angular/material";
 import { UserRoutingModule } from "./user-routing-module";
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [LoginComponent],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,

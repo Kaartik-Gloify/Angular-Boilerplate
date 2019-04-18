@@ -4,22 +4,21 @@
       <div mat-card-avatar><i class="material-icons">account_circle</i></div>
       <mat-card-title>Login</mat-card-title>
     </mat-card-header>
-
-    <mat-card-content>
+    <mat-card-content [formGroup]="loginForm">
       <div class="login-card-container">
         <mat-form-field>
-          <input matInput placeholder="Email Id" />
+          <input matInput placeholder="Email Id" formControlName="email"/>
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput placeholder="Password" type="password" />
+          <input matInput placeholder="Password" type="password" formControlName="password"/>
         </mat-form-field>
       </div>
     </mat-card-content>
     <mat-card-actions class="card-actions">
-      <button mat-raised-button>
+      <button mat-raised-button (click)="login()">
         Login
-      </button></mat-card-actions
-    >
+      </button>
+    </mat-card-actions>
   </mat-card>
 </div>
