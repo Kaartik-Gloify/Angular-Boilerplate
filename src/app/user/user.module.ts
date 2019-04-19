@@ -1,3 +1,4 @@
+import { HttpClient } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { LoginComponent } from "./login/login.component";
@@ -41,10 +42,13 @@ import {
   MatTreeModule
 } from "@angular/material";
 import { UserRoutingModule } from "./user-routing-module";
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from "@angular/forms";
+import { SignupComponent } from "./signup/signup.component";
+import { ProfileComponent } from './profile/profile.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, SignupComponent, ProfileComponent, ForgotpasswordComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

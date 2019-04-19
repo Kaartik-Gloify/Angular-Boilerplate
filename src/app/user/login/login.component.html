@@ -7,17 +7,25 @@
     <mat-card-content [formGroup]="loginForm">
       <div class="login-card-container">
         <mat-form-field>
-          <input matInput placeholder="Email Id" formControlName="email"/>
+          <input matInput placeholder="Email Id" formControlName="email" />
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput placeholder="Password" type="password" formControlName="password"/>
+          <input
+            matInput
+            placeholder="Password"
+            type="password"
+            formControlName="password"
+          />
         </mat-form-field>
       </div>
     </mat-card-content>
     <mat-card-actions class="card-actions">
       <button mat-raised-button (click)="login()">
         Login
+      </button>
+      <button mat-raised-button routerLink="/user/forgot-password">
+        Forgot Password?
       </button>
     </mat-card-actions>
   </mat-card>
