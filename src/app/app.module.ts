@@ -16,6 +16,7 @@ import { BrandComponent } from "./brand/brand.component";
 import { JwtInterceptor } from "./helpers/jwt.interceptor";
 import { ErrorInterceptor } from "./helpers/error.interceptor";
 import { PagenotfoundComponent } from "./shared/pagenotfound/pagenotfound.component";
+import { LoaderInterceptor } from "./helpers/loader.interceptor";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { PagenotfoundComponent } from "./shared/pagenotfound/pagenotfound.compon
     FormBuilder,
 
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,3 +1,4 @@
+// tslint:disable-next-line: quotemark
 import { PagenotfoundComponent } from "./shared/pagenotfound/pagenotfound.component";
 import { BrandComponent } from "./brand/brand.component";
 import { LoginComponent } from "./user/login/login.component";

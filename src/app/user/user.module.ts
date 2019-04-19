@@ -44,11 +44,16 @@ import {
 import { UserRoutingModule } from "./user-routing-module";
 import { ReactiveFormsModule } from "@angular/forms";
 import { SignupComponent } from "./signup/signup.component";
-import { ProfileComponent } from './profile/profile.component';
-import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ProfileComponent } from "./profile/profile.component";
+import { ForgotpasswordComponent } from "./forgotpassword/forgotpassword.component";
 
 @NgModule({
-  declarations: [LoginComponent, SignupComponent, ProfileComponent, ForgotpasswordComponent],
+  declarations: [
+    LoginComponent,
+    SignupComponent,
+    ProfileComponent,
+    ForgotpasswordComponent
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,

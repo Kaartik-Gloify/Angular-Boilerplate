@@ -25,7 +25,7 @@ export class AuthenticationService {
       )
       .pipe(
         map(user => {
-          let accessToken = user.headers.get("access-token");
+          const accessToken = user.headers.get("access-token");
           // login successful if there's a jwt token in the response
           if (user.body && accessToken) {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
