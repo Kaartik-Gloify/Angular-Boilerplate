@@ -1,0 +1,33 @@
+<div class="nav">
+  <div class="links-left">
+    <a class="nav-item" routerLink="/brand">Brand</a>
+    <a class="nav-item" routerLink="/about">About Us</a>
+  </div>
+  <div class="links-right">
+    <a
+      class="nav-item-inverse"
+      *ngIf="!this.authenticationDetails.currentUser.access_token"
+      routerLink="user/login"
+      >Login</a
+    >
+    <a
+      class="nav-item"
+      *ngIf="this.authenticationDetails.currentUser.access_token"
+      routerLink="/user/profile"
+      >Profile</a
+    >
+    <a
+      class="nav-item-inverse"
+      *ngIf="this.authenticationDetails.currentUser.access_token"
+      (click)="logout()"
+      >Logout</a
+    >
+
+    <a
+      class="nav-item-inverse"
+      *ngIf="!this.authenticationDetails.currentUser.access_token"
+      routerLink="user/signup"
+      >SignUp</a
+    >
+  </div>
+</div>

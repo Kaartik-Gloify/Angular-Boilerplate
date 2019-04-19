@@ -4,11 +4,14 @@ import { Injectable } from "@angular/core";
   providedIn: "root"
 })
 export class AuthenticationDetailsService {
-  currentUser;
-  constructor() {}
+  currentUser = { email: null, access_token: null };
+  constructor() {
+    this.currentUser.email = localStorage.getItem("user");
+    this.currentUser.access_token = localStorage.getItem("access-token");
+  }
 
   getUserDetails() {
-    this.currentUser.email = localStorage.getItem("email");
+    this.currentUser.email = localStorage.getItem("user");
     this.currentUser.access_token = localStorage.getItem("access-token");
     console.log(this.currentUser);
     return this.currentUser;

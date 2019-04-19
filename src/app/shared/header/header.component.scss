@@ -1,0 +1,43 @@
+$color-nav-link-border: rgb(255, 254, 254);
+@import "../../variables.scss";
+
+a {
+  cursor: pointer;
+  outline: none;
+  color: $color-nav-link-border;
+  text-decoration: none;
+}
+
+a:active {
+  color: white;
+}
+
+.nav {
+  display: flex;
+  width: 100%;
+  background-color: mat-color($primaryPalette);
+  height: 3.1rem;
+  box-sizing: content-box;
+  color: $color-nav-link-border;
+}
+
+.links-right {
+  margin-left: auto;
+}
+
+.links-left,
+.links-right {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-item,
+.nav-item-inverse {
+  padding: 0.5rem;
+  margin: auto;
+}
+
+.nav-item:hover,
+.nav-item-inverse:hover {
+  box-shadow: 0 0 1px 1px $color-nav-link-border;
+}
