@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, HostBinding } from "@angular/core";
 import {
   Event,
   NavigationCancel,
@@ -7,6 +7,8 @@ import {
   NavigationStart,
   Router
 } from "@angular/router";
+import { AuthenticationService } from "./services/authentication/authentication.service";
+import { OverlayContainer } from "@angular/cdk/overlay";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -15,8 +17,13 @@ import {
 export class AppComponent {
   title = "boilerplate-angular-jwt";
   loading = false;
+  @HostBinding("class") componentCssClass;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    public authenticationService: AuthenticationService,
+    public overlayContainer: OverlayContainer
+  ) {
     this.router.events.subscribe((event: Event) => {
       switch (true) {
         case event instanceof NavigationStart: {
@@ -34,5 +41,10 @@ export class AppComponent {
         }
       }
     });
+    this.onSetTheme("dark-theme");
+  }
+  onSetTheme(theme) {
+    this.overlayContainer.getContainerElement().classList.add(theme);
+    this.componentCssClass = theme;
   }
 }

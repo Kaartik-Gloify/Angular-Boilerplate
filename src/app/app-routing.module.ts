@@ -5,11 +5,16 @@ import { LoginComponent } from "./user/login/login.component";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { BrowserModule } from "@angular/platform-browser";
-import { HomeComponent } from "./home/home/home.component";
+import { HomeComponent } from "./home/home.component";
 import { AboutusComponent } from "./aboutus/aboutus.component";
 import { AuthGuard } from "./guards/auth.guard";
 
 const routes: Routes = [
+  {
+    path: "",
+    component: BrandComponent,
+    pathMatch: "full"
+  },
   {
     path: "user",
     loadChildren: "./user/user.module#UserModule"

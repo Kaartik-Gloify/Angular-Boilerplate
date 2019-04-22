@@ -3,9 +3,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { first } from "rxjs/internal/operators/first";
 import { AuthenticationService } from "src/app/services/authentication/authentication.service";
-import { Globals } from "src/app/globals";
 import { AuthenticationDetailsService } from "src/app/services/authenticationDetails/authentication-details.service";
-import { ChangeDetectionStrategy } from "@angular/compiler/src/compiler_facade_interface";
 
 @Component({
   selector: "app-login",

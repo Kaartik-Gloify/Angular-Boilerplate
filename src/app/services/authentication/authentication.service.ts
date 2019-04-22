@@ -7,6 +7,7 @@ import { Router } from "@angular/router";
   providedIn: "root"
 })
 export class AuthenticationService {
+  loading = false;
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -25,14 +26,17 @@ export class AuthenticationService {
       )
       .pipe(
         map(user => {
+          this.loading = true;
           const accessToken = user.headers.get("access-token");
           // login successful if there's a jwt token in the response
           if (user.body && accessToken) {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem("access-token", accessToken);
             localStorage.setItem("user", email);
+            this.loading = false;
             return true;
           } else {
+            this.loading = false;
             return false;
           }
         })
