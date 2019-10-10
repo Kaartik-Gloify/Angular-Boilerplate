@@ -20,9 +20,10 @@ jobs:
 
   setup-environment:
     executor: project-executor
-    branches:
-      ignore:
-        - master
+    filters:
+      branches:
+        ignore:
+          - master
     steps:
       - checkout
       - run: 
@@ -58,8 +59,9 @@ jobs:
   build:
     executor: project-executor
     branches:
-      ignore:
-        - master
+      filters:
+        ignore:
+          - master
     steps:
       - checkout
       - attach_workspace:
