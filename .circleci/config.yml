@@ -55,6 +55,7 @@ jobs:
   build:
     executor: project-executer
     steps:
+      - checkout
       - attach_workspace:
           at: ~/Angular-Boilerplate
       # Download and cache dependencies
