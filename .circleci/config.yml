@@ -4,7 +4,7 @@
 #
 version: 2.1
 executors:
-  project-executer:
+  project-executor:
     docker:
       # specify the version you desire here
       - image: circleci/node:11.10.0
@@ -53,7 +53,7 @@ jobs:
             - firebase.json
   
   build:
-    executor: project-executer
+    executor: project-executor
     steps:
       - checkout
       - attach_workspace:
@@ -89,4 +89,6 @@ workflows:
   setup-and-deploy:
     jobs:
       - setup-environment
-      - build
+      - build: 
+          requires:
+            - setup-environment
