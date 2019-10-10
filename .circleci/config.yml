@@ -2,9 +2,9 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-version: 2
-jobs:
-  build:
+version: 2.1
+executors:
+  project-executer:
     docker:
       # specify the version you desire here
       - image: circleci/node:11.10.0
@@ -16,8 +16,40 @@ jobs:
 
     working_directory: ~/Angular-Boilerplate
 
+jobs:
+
+  setup-environment:
+    executor: project-executor
     steps:
       - checkout
+      - run: 
+          name: Show current branch
+          command: echo ${CIRCLE_BRANCH}
+      
+      - run:
+          name: Install local dependencies
+          command: |
+            sudo npm i npm@6.7.0 -g
+            npm install
+      - run:
+          name: Build Node Sass
+          command: npm install --unsafe-perm node-sass
+
+      - run:
+          name: Building
+          command: |
+            if [[ "${CIRCLE_BRANCH}" == "staging-"* ]]; then
+              npm run build-staging
+            elif [ "${CIRCLE_BRANCH}" == "master" ]; then
+              npm run build
+            else
+              npm run build
+            fi
+
+      - save_cache:
+          key: v1-dependencies-{{checksum "package.json"}}
+          paths:
+            - node_modules
 
       # Download and cache dependencies
       - restore_cache:
@@ -25,10 +57,15 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-
-      - run: yarn install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+      
+      - persist_to_workspace:
+          root: .
+          paths: 
+            - src
+            - package.json
+            - angular.json
+            - Dockerfile
+            - tslint.json
+            - tsconfig.json
+            - .firebaserc
+            - firebase.json
