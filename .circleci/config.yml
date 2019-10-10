@@ -98,3 +98,7 @@ workflows:
       - build: 
           requires:
             - setup-environment
+          filters:
+            branches:
+              ignore:
+                - master
