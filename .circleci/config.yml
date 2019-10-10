@@ -41,9 +41,9 @@ jobs:
             if [[ "${CIRCLE_BRANCH}" == "staging-"* ]]; then
               npm run build-staging
             elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-              npm run build
+              npm build
             else
-              npm run build
+              npm build
             fi
 
       - save_cache:
