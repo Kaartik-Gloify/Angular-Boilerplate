@@ -70,12 +70,12 @@ jobs:
       - run:
           name: Building
           command: |
-            if [[ "${CIRCLE_BRANCH}" == "staging-"* ]]; then
-              npm run build-staging
-            elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-              npm run build
-            else
-              npm run build
+            if [[ "${CIRCLE_BRANCH}" == "qa" ]]; then
+              node --max_old_space_size=12288 ./node_modules/.bin/ng build --environment qa --aot
+            # elif [ "${CIRCLE_BRANCH}" == "prod" ]; then
+            #   npm run build
+            # else
+            #   npm run build
             fi
       # Cache the dist folder for the deploy job
       - save_cache:
@@ -94,7 +94,7 @@ workflows:
           filters:
             branches:
               ignore:
-                # - master
+                - master
       - build: 
           filters:
             branches:
