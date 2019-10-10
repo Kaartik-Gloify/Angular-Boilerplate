@@ -92,13 +92,13 @@ workflows:
     jobs:
       - setup-environment:
         filters:
-            branches:
-              ignore:
-                - master
+          branches:
+            ignore:
+              - master
       - build: 
-          requires:
-            - setup-environment
-          filters:
-            branches:
-              ignore:
-                - master
+        requires:
+          - setup-environment
+        filters:
+          branches:
+            ignore:
+              - master
