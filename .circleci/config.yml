@@ -84,3 +84,11 @@ jobs:
           root: .
           paths:
             - dist
+workflows:
+  version: 2
+  concurrently:
+    jobs:
+      - setup-environment
+      - build :
+          requires:
+            - setup-environment
