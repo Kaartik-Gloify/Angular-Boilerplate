@@ -94,7 +94,7 @@ workflows:
           filters:
             branches:
               ignore:
-                - master
+                # - master
       - build: 
           filters:
             branches:
