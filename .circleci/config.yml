@@ -86,15 +86,15 @@ jobs:
           root: .
           paths:
             - dist
-workflows:
-  version: 2
-  setup-and-deploy:
-    jobs:
-      - setup-environment:
-        filters:
-            branches:
-              ignore:
-                - master
-      - build: 
-          requires:
-            - setup-environment
+# workflows:
+#   version: 2
+#   setup-and-deploy:
+#     jobs:
+#       - setup-environment:
+#         filters:
+#             branches:
+#               ignore:
+#                 - master
+#       - build: 
+#           requires:
+#             - setup-environment
