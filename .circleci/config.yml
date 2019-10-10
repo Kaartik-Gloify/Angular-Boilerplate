@@ -88,7 +88,13 @@ workflows:
   version: 2
   setup-and-deploy:
     jobs:
-      - setup-environment
+      - setup-environment:
+          branches:
+            ignore:
+              - master
       - build: 
+          branches:
+            ignore:
+              - master
           requires:
             - setup-environment
