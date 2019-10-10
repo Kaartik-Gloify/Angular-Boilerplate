@@ -86,7 +86,7 @@ jobs:
             - dist
 workflows:
   version: 2
-  concurrently:
+  setup-and-deploy:
     jobs:
       - setup-environment
       - build :
