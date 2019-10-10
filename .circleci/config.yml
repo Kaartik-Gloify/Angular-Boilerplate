@@ -89,6 +89,4 @@ workflows:
   setup-and-deploy:
     jobs:
       - setup-environment
-      - build :
-          requires:
-            - setup-environment
+      - build
