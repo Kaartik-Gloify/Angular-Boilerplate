@@ -52,32 +52,34 @@ jobs:
             - .firebaserc
             - firebase.json
   
-  build:
-    executor: project-executor
-    steps:
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-      
-      - run:
-          name: Building
-          command: |
-            if [[ "${CIRCLE_BRANCH}" == "staging-"* ]]; then
-              npm run build-staging
-            elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-              npm run build
-            else
-              npm run build
-            fi
-      # Cache the dist folder for the deploy job
-      - save_cache:
-          key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
-          paths:
-            - dist
-      - persist_to_workspace:
-          root: .
-          paths:
-            - dist
+build:
+  executor: project-executer
+  steps:
+    - attach_workspace:
+        at: ~/Angular-Boilerplate
+    # Download and cache dependencies
+    - restore_cache:
+        keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+    
+    - run:
+        name: Building
+        command: |
+          if [[ "${CIRCLE_BRANCH}" == "staging-"* ]]; then
+            npm run build-staging
+          elif [ "${CIRCLE_BRANCH}" == "master" ]; then
+            npm run build
+          else
+            npm run build
+          fi
+    # Cache the dist folder for the deploy job
+    - save_cache:
+        key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+        paths:
+          - dist
+    - persist_to_workspace:
+        root: .
+        paths:
+          - dist
