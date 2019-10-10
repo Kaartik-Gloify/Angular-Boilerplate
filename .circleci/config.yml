@@ -91,14 +91,14 @@ workflows:
   setup-and-deploy:
     jobs:
       - setup-environment:
-        filters:
-          branches:
-            ignore:
-              - master
+          filters:
+            branches:
+              ignore:
+                - master
       - build: 
-        requires:
-          - setup-environment
-        filters:
-          branches:
-            ignore:
-              - master
+          requires:
+            - setup-environment
+          filters:
+            branches:
+              ignore:
+                - master
